@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
+import Formular from "./Formular";
 import './App.css';
 
-function App() {
+function App(){
+
+  const [data, zmenData] = useState(["data na začiatku"]);
+
+  console.log("Rodic", data)
+
+  localStorage.setItem("data", JSON.stringify(data))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+     <h1>
+        Zoznam filmov
+      </h1>
+  {data.map(element => <p>{element}</p>)}
+    <Formular funkciaPreZmenuDatRodica={zmenData}/>
+ 
+  </>
+ 
   );
+
 }
 
 export default App;
